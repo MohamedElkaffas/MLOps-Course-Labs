@@ -75,4 +75,3 @@ if __name__ == "__main__":
     uri_rf = f"runs:/{run_id_rf}/model"
     mv2 = client.create_model_version("ChurnModel", uri_rf, run_id_rf)
     client.transition_model_version_stage("ChurnModel", mv2.version, "Production")
->>>>>>> Stashed changes
