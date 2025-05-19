@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/moham/MLOps-Course-Labs/src/mlruns/559514879381818211/953920e1c7d1432b85a436da1b6d5c78/artifacts
+end_time: 1747648364899
+entry_point_name: ''
+experiment_id: '559514879381818211'
+lifecycle_stage: active
+run_id: 953920e1c7d1432b85a436da1b6d5c78
+run_name: LR_baseline
+run_uuid: 953920e1c7d1432b85a436da1b6d5c78
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1747648364836
+status: 4
+tags: []
+user_id: moham

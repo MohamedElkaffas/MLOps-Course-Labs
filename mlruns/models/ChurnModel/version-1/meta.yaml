@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1747651880437
+current_stage: Staging
+description: null
+last_updated_timestamp: 1747651880486
+name: ChurnModel
+run_id: bcd05ef8542745e89124e038fd7ea6cb
+run_link: null
+source: runs:/bcd05ef8542745e89124e038fd7ea6cb/model
+status: READY
+status_message: null
+storage_location: runs:/bcd05ef8542745e89124e038fd7ea6cb/model
+user_id: null
+version: 1

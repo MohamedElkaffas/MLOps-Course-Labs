@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/moham/MLOps-Course-Labs/mlruns/299816881939213089/21566914991541a89e241c1c935d7b51/artifacts
+end_time: 1747648714088
+entry_point_name: ''
+experiment_id: '299816881939213089'
+lifecycle_stage: active
+run_id: 21566914991541a89e241c1c935d7b51
+run_name: XGB_100_0.1
+run_uuid: 21566914991541a89e241c1c935d7b51
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1747648709088
+status: 3
+tags: []
+user_id: moham
