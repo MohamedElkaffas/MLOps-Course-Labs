@@ -7,7 +7,7 @@ from pydantic import BaseModel
 from fastapi.testclient import TestClient  # For tests
 
 
-# Load your offline pickle
+# Load the offline pickle
 MODEL_PATH = os.path.join("models", "xgb_best.pkl")
 model = joblib.load(MODEL_PATH)
 
