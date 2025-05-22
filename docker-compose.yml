@@ -30,4 +30,4 @@ services:
       -f locustfile.py
       --host http://churn_api:8000
     ports:
-      - "8005:8089"    # host:containers
+      - "8007:8089"    # host:containers
