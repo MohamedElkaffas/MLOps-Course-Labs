@@ -23,3 +23,11 @@ services:
       - "3000:3000"
     depends_on:
       - prometheus
+
+  locust:
+    image: locustio/locust
+    command: >
+      -f locustfile.py
+      --host http://churn_api:8000
+    ports:
+      - "8005:8089"    # host:containers
