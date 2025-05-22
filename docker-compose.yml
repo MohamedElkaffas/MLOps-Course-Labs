@@ -26,8 +26,15 @@ services:
 
   locust:
     image: locustio/locust
+    # 1) mount your test script
+    volumes:
+      - ./locustfile.py:/mnt/locust/locustfile.py
+    # 2) override the command to point at that file, and tell it where the API is
     command: >
-      -f locustfile.py
+      -f /mnt/locust/locustfile.py
       --host http://churn_api:8000
+    # 3) map UI port 8089 → host 8007
     ports:
-      - "8007:8089"    # host:containers
+      - "8007:8089"
+    depends_on:
+      - churn_api
