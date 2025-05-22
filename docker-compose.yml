@@ -4,7 +4,7 @@ services:
     image: mohamedatef:latest
     container_name: churn_api
     ports:
-      - "8005:8005"
+      - "8005:8000" # host --> container
 
   prometheus:
     image: prom/prometheus:latest
