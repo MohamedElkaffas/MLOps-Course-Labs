@@ -6,7 +6,8 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from fastapi.testclient import TestClient  # For tests
 from prometheus_fastapi_instrumentator import Instrumentator 
-
+from prometheus_client import Counter, generate_latest, CONTENT_TYPE_LATEST
+from fastapi import Response, Request
 # Load the offline pickle
 MODEL_PATH = os.path.join("models", "xgb_best.pkl")
 model = joblib.load(MODEL_PATH)
@@ -31,9 +32,30 @@ app = FastAPI(
     title="Bank Churn Prediction API",
     version="1.0.0",
 )
+# Automatic metrics (HTTP durations, counts, etc.)
 instrumentator = Instrumentator()
-instrumentator.instrument(app).expose(app)
+instrumentator.instrument(app).expose(app, include_in_schema=False)
+
+# Manual counter for total requests
+REQUEST_COUNT = Counter(
+    "app_request_count",
+    "Total number of HTTP requests",
+    ["method", "endpoint"],
+)
+
+@app.middleware("http")
+async def count_requests(request: Request, call_next):
+    response = await call_next(request)
+    REQUEST_COUNT.labels(request.method, request.url.path).inc()
+    return response
+
+# Manual:
+# @app.get("/metrics", include_in_schema=False)
+# def metrics():
+#     data = generate_latest()
+#     return Response(data, media_type=CONTENT_TYPE_LATEST)   
 @app.get("/", tags=["home"])
+
 def home():
     return {"message": "Bank Churn Prediction API is up"}
 

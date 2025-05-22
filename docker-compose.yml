@@ -2,15 +2,11 @@ version: "3.8"
 
 services:
   churn_api:
+    build: .
     image: mohamedatef:latest
     container_name: churn_api
     ports:
       - "8000:8000"
-    environment:
-      # required by prometheus_fastapi_instrumentator
-      - PROMETHEUS_MULTIPROC_DIR=/tmp
-    volumes:
-      - /tmp:/tmp
 
   prometheus:
     image: prom/prometheus:latest
@@ -19,6 +15,8 @@ services:
       - "9090:9090"
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    depends_on:
+      - churn_api
 
   grafana:
     image: grafana/grafana:latest
