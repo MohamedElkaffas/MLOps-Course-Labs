@@ -5,12 +5,11 @@ import pandas as pd
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from fastapi.testclient import TestClient  # For tests
-
+from prometheus_fastapi_instrumentator import Instrumentator 
 
 # Load the offline pickle
 MODEL_PATH = os.path.join("models", "xgb_best.pkl")
 model = joblib.load(MODEL_PATH)
-
 # Structured logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("churn_api")
@@ -32,7 +31,8 @@ app = FastAPI(
     title="Bank Churn Prediction API",
     version="1.0.0",
 )
-
+instrumentator = Instrumentator()
+instrumentator.instrument(app).expose(app)
 @app.get("/", tags=["home"])
 def home():
     return {"message": "Bank Churn Prediction API is up"}
