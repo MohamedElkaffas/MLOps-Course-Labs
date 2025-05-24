@@ -1,7 +1,7 @@
 services:
   churn_api:
     build: .
-    image: mohamedatef:latest
+    image: scorpio1317/mohamedatef-churnprediction:694
     container_name: churn_api
     ports:
       - "8005:8000" # host --> container
