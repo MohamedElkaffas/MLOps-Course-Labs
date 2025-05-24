@@ -4,5 +4,5 @@ scikit-learn==1.4.2
 joblib==1.4.2
 pydantic==2.7.1
 pandas==2.2.2
-xgboost==1.7.6
+xgboost==3.0.1
 prometheus-fastapi-instrumentator
