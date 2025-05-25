@@ -1,7 +1,7 @@
 services:
   churn_api:
     build: .
-    image: scorpio1317/mohamedatef-churnprediction:694
+    image: scorpio1317/mohamedatef-churnprediction:latest
     container_name: churn_api
     ports:
       - "8005:8000" # host --> container
@@ -26,14 +26,14 @@ services:
 
   locust:
     image: locustio/locust
-    # 1) mount your test script
+    # mount your test script
     volumes:
-      - ./locustfile.py:/mnt/locust/locustfile.py
-    # 2) override the command to point at that file, and tell it where the API is
+      - ./locustfile.py
+    # override the command to point at that file, and tell it where the API is
     command: >
-      -f /mnt/locust/locustfile.py
+      -f ./locustfile.py
       --host http://churn_api:8000
-    # 3) map UI port 8089 → host 8007
+    # map UI port 8089 → host 8007
     ports:
       - "8007:8089"
     depends_on:
