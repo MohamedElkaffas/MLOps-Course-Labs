@@ -5,5 +5,5 @@ scrape_configs:
   - job_name: 'bank_churn_api'
     metrics_path: /metrics
     static_configs:
-      - targets: ['tmwcmkutwyjr.us-east-1.clawcloudrun.com:8000']    
+      - targets: ['https://ssisnhvhebbs.eu-central-1.clawcloudrun.com/:8000']    
       #- targets: ['churn_api:8000']
