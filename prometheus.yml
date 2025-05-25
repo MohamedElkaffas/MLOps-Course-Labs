@@ -1,8 +1,9 @@
 global:
   scrape_interval: 15s
-
+  
 scrape_configs:
   - job_name: 'bank_churn_api'
+    scheme: https                # <-- tell Prometheus to speak HTTPS
     metrics_path: /metrics
     static_configs:
       - targets: ['https://ssisnhvhebbs.eu-central-1.clawcloudrun.com/:8000']    
